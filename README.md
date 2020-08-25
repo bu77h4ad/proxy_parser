@@ -1,7 +1,12 @@
 ### proxy_parser
 Парсит прокси с сайта http://free-proxy.cz/en/proxylist/country/all/https/ping/all . 
 ```python
-a = proxy_parser()  
+#пример использования
+
+import proxy_parser
+#добавляем парсер в свой проект
+
+a = proxy_parser.proxy_parser()  
 #создание объекта класса
 
 a.get_proxies('https',1)  
