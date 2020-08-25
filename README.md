@@ -1,6 +1,6 @@
 ### proxy_parser
 Парсит прокси с сайта http://free-proxy.cz/en/proxylist/country/all/https/ping/all . 
-
+```python
 `a = proxy_parser()`  
 #создание объекта класса
 
@@ -12,3 +12,4 @@
 `print (a.server[1]['ip'], a.server[1]['port'] ,  a.server[1]['protocol'] , len(a.server), a.next_proxy())`  
 #вывод будет таким  
 #200.73.132.107 3129 HTTPS 35 {'ip': '51.161.116.223', 'port': '3128', 'protocol': 'HTTPS'}
+```
