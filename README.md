@@ -1,6 +1,5 @@
-# proxy_parser
+### proxy_parser
 Парсит прокси с сайта http://free-proxy.cz/en/proxylist/country/all/https/ping/all . 
-
 
 a = proxy_parser()  
 #создание объекта класса
