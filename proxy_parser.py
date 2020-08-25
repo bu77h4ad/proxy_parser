@@ -25,7 +25,7 @@ class proxy_parser(object):
 		"""Constructor get_protocol = https,http,socks4,socks5,socks,all"""		
 
 		for j in range(1, get_list+1): #количество страниц
-			response = requests.get('http://free-proxy.cz/ru/proxylist/country/all/'+get_protocol+'/ping/all/'+ str(j), headers=header ).content.decode()
+			response = requests.get('http://free-proxy.cz/ru/proxylist/country/all/'+get_protocol.lower()+'/ping/all/'+ str(j), headers=header ).content.decode()
 			soup = BeautifulSoup(response, 'lxml')
 	        
 			tr = soup.findAll( "tbody")[0].findAll("tr")	# нашел таблицу айпишниками. 
@@ -56,5 +56,5 @@ class proxy_parser(object):
 		return "I'm driving!"
 
 #a = proxy_parser() 
-#a.get_proxies('https',1)
-#print (a.server[-1]['ip'], a.server[1]['port'] ,  a.server[1]['protocol'] , len(a.server), a.next_proxy())
+#a.get_proxies('https', 1)
+#print (a.server[1]['ip'], a.server[1]['port'] ,  a.server[1]['protocol'] , len(a.server), a.next_proxy())
