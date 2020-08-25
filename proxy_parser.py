@@ -21,21 +21,21 @@ class proxy_parser(object):
 		self.server   = []
 		return
 
-	def get_poxy(self, get_protocol='all', get_list = 1 ):
+	def get_proxies(self, get_protocol='all', get_list = 1 ):
 		"""Constructor get_protocol = https,http,socks4,socks5,socks,all"""		
 
 		for j in range(1, get_list+1): #количество страниц
 			response = requests.get('http://free-proxy.cz/ru/proxylist/country/all/'+get_protocol+'/ping/all/'+ str(j), headers=header ).content.decode()
 			soup = BeautifulSoup(response, 'lxml')
 	        
-			tr = soup.findAll( "tbody")[0].findAll("tr")	# нашел таблицу айпишниками
+			tr = soup.findAll( "tbody")[0].findAll("tr")	# нашел таблицу айпишниками. 
 
-			for i in range( 0, len(tr) ):	
-				if len(tr[i].findAll('td', {'colspan' : "11"} )) != 0: # проверка на пустую строку TR
+			for i in range( 0, len(tr) ):	                #len(tr) = равен количествк строк в таблице
+				if len(tr[i].findAll('td', {'colspan' : "11"} )) != 0: # проверка на пустую строку в tr
 					continue	
-				ip   =  base64.b64decode( str(tr[i].findAll("td")[0]).split('"')[-2] ).decode("UTF-8")
-				port =  tr[i].findAll("td")[1].text
-				protocol =  tr[i].findAll("td")[2].text
+				ip   =  base64.b64decode( str(tr[i].findAll("td")[0]).split('"')[-2] ).decode("UTF-8") # спарсил ип
+				port =  tr[i].findAll("td")[1].text                                                    # спарсил порт
+				protocol =  str(tr[i].findAll("td")[2].text).lower()                                   # спарсил протокол
 
 				self.server.append( { "ip":ip, "port":port, "protocol":protocol } )
 
@@ -55,6 +55,6 @@ class proxy_parser(object):
 		"""
 		return "I'm driving!"
 
-#a = proxylist() 
-#a.get_poxy('https',1)
+#a = proxy_parser() 
+#a.get_proxies('https',1)
 #print (a.server[-1]['ip'], a.server[1]['port'] ,  a.server[1]['protocol'] , len(a.server), a.next_proxy())
