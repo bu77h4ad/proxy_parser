@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import base64
+import random
 
 header = {
 	'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -44,17 +45,19 @@ class proxy_parser(object):
 		return self.server
 	def next_proxy(self):
 		"""
-		next proxy
+		возвращает по одной прокси, с начала до конца списка  
 		"""
-		self.index = self.index + 1
-		
+		self.index = self.index + 1	
+		if 	self.index > len(self.server):
+			self.index = 0
 		return self.server[ self.index ]
-	def drive(self):
+
+	def random_proxy(self):
 		"""
-		Drive the car
+		рандомная прокся из массива server
 		"""
-		return "I'm driving!"
+		return random.choice(self.server)
 
 #a = proxy_parser() 
 #a.get_proxies('https', 1)
-#print (a.server[1]['ip'], a.server[1]['port'] ,  a.server[1]['protocol'] , len(a.server), a.next_proxy())
+#print (a.server[1]['ip'], a.server[1]['port'] ,  a.server[1]['protocol'] , len(a.server), a.next_proxy(), a.random_proxy())
