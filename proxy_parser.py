@@ -48,7 +48,7 @@ class proxy_parser(object):
 		возвращает по одной прокси, с начала до конца списка  
 		"""
 		self.index = self.index + 1	
-		if 	self.index > len(self.server):
+		if 	self.index >= len(self.server):
 			self.index = 0
 		return self.server[ self.index ]
 
