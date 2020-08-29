@@ -40,7 +40,7 @@ class proxy_parser(object):
 
 				self.server.append( { "ip":ip, "port":port, "protocol":protocol } )
 
-				print ( i, ip,'\t ', port ,'\t ', protocol,  len(tr) )
+				#print ( i, ip,'\t ', port ,'\t ', protocol,  len(tr) )
 
 		return self.server
 	def next_proxy(self):
