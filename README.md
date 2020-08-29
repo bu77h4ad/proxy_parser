@@ -1,5 +1,6 @@
 ### proxy_parser
-Парсит прокси с сайта http://free-proxy.cz/en/proxylist/country/all/https/ping/all . 
+Парсит прокси с сайта http://free-proxy.cz/en/proxylist/country/all/https/ping/all .  
+pip install proxy_parser  
 ```python
 #пример использования
 
